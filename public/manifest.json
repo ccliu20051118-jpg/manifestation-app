@@ -1,0 +1,13 @@
+{
+  "name": "顯化美麗人生",
+  "short_name": "顯化美麗人生",
+  "description": "透過科學方法實踐顯化，記錄習慣、覺察情緒、感恩日記",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#F5F9F7",
+  "theme_color": "#7BC2A8",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
