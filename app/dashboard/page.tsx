@@ -1,14 +1,11 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase-browser";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
 export default function DashboardPage() {
   const [userName, setUserName] = useState("");
   const router = useRouter();
-
   useEffect(function() {
     var supabase = createClient();
     supabase.auth.getUser().then(function(res) {
@@ -17,24 +14,24 @@ export default function DashboardPage() {
       }
     });
   }, []);
-
   function handleLogout() {
     var supabase = createClient();
     supabase.auth.signOut().then(function() {
       router.push("/login");
     });
   }
-
   var menuItems = [
     { title: "顯化&方法", href: "/dashboard/knowledge" },
     { title: "早晨啟動", href: "/dashboard/morning" },
     { title: "心情覺察記錄", href: "/dashboard/mood" },
     { title: "今日複盤", href: "/dashboard/review" },
+    { title: "習慣養成", href: "/dashboard/habit" },
     { title: "睡前感恩", href: "/dashboard/evening" },
     { title: "每週練習足跡", href: "/dashboard/weekly" },
     { title: "我的檔案", href: "/dashboard/profile" },
+    { title: "提醒鬧鐘", href: "/dashboard/reminder" },
+    { title: "顯化交流社群（開發中）", href: "#" },
   ];
-
   return (
     <div style={{ maxWidth: 480, margin: "0 auto", padding: "32px 24px" }}>
       <div style={{ textAlign: "center", marginBottom: 32, marginTop: 16 }}>
@@ -45,7 +42,6 @@ export default function DashboardPage() {
           <p style={{ color: "#687076", fontSize: 14, marginTop: 8 }}>歡迎回來，{userName}</p>
         ) : null}
       </div>
-
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 32 }}>
         {menuItems.map(function(item) {
           return (
@@ -61,6 +57,7 @@ export default function DashboardPage() {
                 alignItems: "center",
                 justifyContent: "center",
                 textDecoration: "none",
+                opacity: item.href === "#" ? 0.6 : 1,
               }}
             >
               <span style={{ fontSize: 16, fontWeight: 500, color: "#2D4A3E", textAlign: "center" }}>
@@ -70,9 +67,8 @@ export default function DashboardPage() {
           );
         })}
       </div>
-
       <div style={{ textAlign: "center", marginBottom: 24 }}>
-        <a
+        
           href="https://futurehealingdesign.com"
           target="_blank"
           rel="noopener noreferrer"
@@ -81,7 +77,6 @@ export default function DashboardPage() {
           前往官網閱讀更多深度文章 →
         </a>
       </div>
-
       <button
         onClick={handleLogout}
         style={{
