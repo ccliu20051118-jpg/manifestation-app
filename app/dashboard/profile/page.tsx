@@ -2,27 +2,26 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase-browser";
 import { useRouter } from "next/navigation";
-
 export default function ProfilePage() {
   const [email, setEmail] = useState("");
   const router = useRouter();
-
   useEffect(() => {
     const supabase = createClient();
     supabase.auth.getUser().then(({ data }) => {
       if (data.user?.email) setEmail(data.user.email);
     });
   }, []);
-
   async function handleLogout() {
     const supabase = createClient();
     await supabase.auth.signOut();
     router.push("/login");
   }
-
   return (
-    <div className="max-w-lg mx-auto px-5 pt-8">
-      <h1 className="text-2xl font-bold text-text-main mb-8">👤 我的帳號</h1>
+    <div className="max-w-lg mx-auto px-5 pt-6 pb-8">
+      <div className="flex items-center mb-6">
+        <button onClick={() => router.push("/dashboard")} className="text-2xl mr-3" aria-label="返回">←</button>
+        <h1 className="text-xl font-bold text-text-main">👤 我的帳號</h1>
+      </div>
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-6">
         <div className="flex items-center gap-4 mb-6">
           <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center"><span className="text-2xl">✨</span></div>
