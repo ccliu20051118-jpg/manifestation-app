@@ -1,16 +1,19 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-
 const categoryIcons = { "what-is-manifestation": "🌟", "how-to-manifest": "🎯", "how-to-heal": "💚", "how-to-grow": "🌱" };
-
 export default function KnowledgePage() {
+  const router = useRouter();
   const [data, setData] = useState(null);
   useEffect(() => { fetch("/knowledge.json").then(r => r.json()).then(setData); }, []);
   if (!data) return <div className="flex items-center justify-center min-h-[60vh]"><div className="w-10 h-10 border-4 border-gray-200 border-t-primary rounded-full animate-spin"></div></div>;
   return (
-    <div className="max-w-lg mx-auto px-5 pt-8 pb-8">
-      <h1 className="text-2xl font-bold text-text-main mb-2">📚 知識模組</h1>
+    <div className="max-w-lg mx-auto px-5 pt-6 pb-8">
+      <div className="flex items-center mb-6">
+        <button onClick={() => router.push("/dashboard")} className="text-2xl mr-3" aria-label="返回">←</button>
+        <h1 className="text-xl font-bold text-text-main">📚 知識模組</h1>
+      </div>
       <p className="text-text-sub text-sm mb-8">療癒與顯化的智慧，一步步帶你認識自己</p>
       <div className="space-y-4">
         {data.categories.sort((a, b) => a.order - b.order).map((cat) => (
