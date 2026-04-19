@@ -33,16 +33,16 @@ export default function DashboardPage() {
     { title: "顯化交流社群（開發中）", href: "#" },
   ];
   return (
-    <div style={{ maxWidth: 480, margin: "0 auto", padding: "32px 24px" }}>
-      <div style={{ textAlign: "center", marginBottom: 32, marginTop: 16 }}>
-        <h1 style={{ fontSize: 24, fontWeight: "bold", color: "#2D4A3E" }}>
+    <div style={{ maxWidth: 480, margin: "0 auto", padding: "16px 20px" }}>
+      <div style={{ textAlign: "center", marginBottom: 16, marginTop: 8 }}>
+        <h1 style={{ fontSize: 22, fontWeight: "bold", color: "#2D4A3E" }}>
           顯化美麗人生
         </h1>
         {userName ? (
-          <p style={{ color: "#687076", fontSize: 14, marginTop: 8 }}>歡迎回來，{userName}</p>
+          <p style={{ color: "#687076", fontSize: 13, marginTop: 4 }}>歡迎回來，{userName}</p>
         ) : null}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 32 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
         {menuItems.map(function(item) {
           return (
             <Link
@@ -50,9 +50,9 @@ export default function DashboardPage() {
               href={item.href}
               style={{
                 backgroundColor: "#C2D8D0",
-                borderRadius: 16,
-                padding: 20,
-                minHeight: 100,
+                borderRadius: 14,
+                padding: 14,
+                minHeight: 70,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -60,19 +60,19 @@ export default function DashboardPage() {
                 opacity: item.href === "#" ? 0.6 : 1,
               }}
             >
-              <span style={{ fontSize: 16, fontWeight: 500, color: "#2D4A3E", textAlign: "center" }}>
+              <span style={{ fontSize: 14, fontWeight: 500, color: "#2D4A3E", textAlign: "center" }}>
                 {item.title}
               </span>
             </Link>
           );
         })}
       </div>
-      <div style={{ textAlign: "center", marginBottom: 24 }}>
-        <a
+      <div style={{ textAlign: "center", marginBottom: 12 }}>
+        
           href="https://futurehealingdesign.com"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "#7BC2A8", fontSize: 14 }}
+          style={{ color: "#7BC2A8", fontSize: 13 }}
         >
           前往官網閱讀更多深度文章 →
         </a>
@@ -81,12 +81,12 @@ export default function DashboardPage() {
         onClick={handleLogout}
         style={{
           width: "100%",
-          padding: 16,
+          padding: 12,
           backgroundColor: "#FFFFFF",
           border: "1px solid #C2D8D0",
-          borderRadius: 12,
+          borderRadius: 10,
           color: "#2D4A3E",
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: 500,
           cursor: "pointer",
         }}
